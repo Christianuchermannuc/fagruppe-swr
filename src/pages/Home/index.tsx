@@ -8,29 +8,6 @@ export default function HomePage() {
 
   const data: Product[] = [{ id: "1", name: "test", price: "3233" }];
   return (
-    <>
-      <Breadcrumb spacing>
-        <Breadcrumb.Item
-          onClick={() => {
-            console.log("go home!");
-          }}
-          variant="home"
-        />
-        <Breadcrumb.Item
-          text="Page item"
-          onClick={() => {
-            console.log("go to page 1");
-          }}
-        />
-        <Breadcrumb.Item
-          text="Page item"
-          onClick={() => {
-            console.log("go to page 2");
-          }}
-          variant="current"
-        />
-      </Breadcrumb>
-      {products && <GenericTable columns={defaultColumns} data={products} />}
-    </>
+    <>{products && <GenericTable columns={defaultColumns} data={products} />}</>
   );
 }

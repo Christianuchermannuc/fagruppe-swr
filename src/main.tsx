@@ -6,6 +6,8 @@ import "@dnb/eufemia/style/components";
 import "@dnb/eufemia/style/themes/ui";
 import axios from "axios";
 import { worker } from "./mocks/handler";
+import { RouterProvider } from "react-router-dom";
+import router from "./routes";
 
 const env = import.meta.env.MODE;
 if (env === "development") {
@@ -22,6 +24,6 @@ axios.defaults.baseURL = "http://localhost:5001";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
