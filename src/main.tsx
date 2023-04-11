@@ -10,15 +10,15 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 
 const env = import.meta.env.MODE;
-if (env === "development") {
-  await worker.start({
-    onUnhandledRequest: ({ method, url }) => {
-      if (!url.pathname.match(/\.(tsx|ts|css|woff|woff2|ttf)/)) {
-        throw new Error(`Unhandled ${method} request to ${url}`);
-      }
-    },
-  });
-}
+// if (env === "development") {
+//   await worker.start({
+//     onUnhandledRequest: ({ method, url }) => {
+//       if (!url.pathname.match(/\.(tsx|ts|css|woff|woff2|ttf)/)) {
+//         throw new Error(`Unhandled ${method} request to ${url}`);
+//       }
+//     },
+//   });
+// }
 
 axios.defaults.baseURL = "http://localhost:5001";
 

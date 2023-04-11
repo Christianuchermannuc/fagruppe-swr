@@ -5,9 +5,11 @@ import { useChargeItems } from "../../api/useProductData";
 import { Product } from "../../types/product";
 
 export const useHome = () => {
-  const [queryParamsString, setQueryParamsString] = useState<string>("");
+  const [queryParamsString, setQueryParamsString] =
+    useState<string>("?_page=1&_limit=10");
   const onDeleteRowClick = (deleteItem: Product) => {};
-  const { products } = useChargeItems(true, queryParamsString);
+  const [pageIndex, setPageIndex] = useState<string>("1");
+  const { products, isLoading } = useChargeItems(true, queryParamsString);
 
   const defaultColumns: ColumnDef<Product>[] = [
     {
@@ -33,8 +35,18 @@ export const useHome = () => {
     },
   ];
 
+  const onPageChange = (pageNumber: string) => {
+    setPageIndex(pageNumber);
+    const query = `_page=${pageNumber}&_limit=10`;
+
+    setQueryParamsString(`?${query}`);
+  };
+
   return {
     defaultColumns,
     products,
+    onPageChange,
+    pageIndex,
+    isLoading,
   };
 };
