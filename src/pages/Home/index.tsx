@@ -1,15 +1,38 @@
-import { Breadcrumb, Pagination, ProgressIndicator, Table } from "@dnb/eufemia";
+import {
+  Breadcrumb,
+  Button,
+  FormRow,
+  Pagination,
+  ProgressIndicator,
+  Table,
+} from "@dnb/eufemia";
 import GenericTable from "../../components/genericTable";
 import { Product } from "../../types/product";
 import { useHome } from "./useHome";
 
 export default function HomePage() {
-  const { defaultColumns, products, onPageChange, pageIndex, isLoading } =
-    useHome();
+  const {
+    defaultColumns,
+    products,
+    onPageChange,
+    pageIndex,
+    isLoading,
+    onAddRowClick,
+  } = useHome();
 
   const data: Product[] = [{ id: "1", name: "test", price: "3233" }];
   return (
     <>
+      <FormRow bottom="large x-small">
+        <Button
+          className="absolute right-0.5 bg-[var(--color-sea-green)]"
+          onClick={() => {
+            onAddRowClick();
+          }}
+        >
+          Add
+        </Button>
+      </FormRow>
       {isLoading ? (
         <ProgressIndicator
           type="linear"

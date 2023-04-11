@@ -1,7 +1,11 @@
 import { Button } from "@dnb/eufemia";
 import { ColumnDef } from "@tanstack/react-table";
 import { useState } from "react";
-import { useChargeItems } from "../../api/useProductData";
+import {
+  addProduct,
+  addProductOptions,
+  useChargeItems,
+} from "../../api/useProductData";
 import { Product } from "../../types/product";
 
 export const useHome = () => {
@@ -9,7 +13,28 @@ export const useHome = () => {
     useState<string>("?_page=1&_limit=10");
   const onDeleteRowClick = (deleteItem: Product) => {};
   const [pageIndex, setPageIndex] = useState<string>("1");
-  const { products, isLoading } = useChargeItems(true, queryParamsString);
+  const { products, isLoading, mutate } = useChargeItems(
+    true,
+    queryParamsString
+  );
+
+  const onAddRowClick = async () => {
+    const newId = (Math.floor(Math.random() * 100000) + 1).toString();
+    const newProduct = {
+      id: newId,
+      name: "Product " + newId,
+      price: "22",
+    };
+
+    const localChangeNewProduct = { ...newProduct, name: "En test" };
+    addProduct(newProduct);
+    const updateProducts = [...products, localChangeNewProduct];
+    mutate(updateProducts);
+    // await mutate(
+    //   addProduct(newProduct),
+    //   addProductOptions(localChangeNewProduct)
+    // );
+  };
 
   const defaultColumns: ColumnDef<Product>[] = [
     {
@@ -48,5 +73,6 @@ export const useHome = () => {
     onPageChange,
     pageIndex,
     isLoading,
+    onAddRowClick,
   };
 };
