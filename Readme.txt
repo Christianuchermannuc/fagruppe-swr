@@ -1,8 +1,14 @@
 Install:
+npm i -g json-server
 npm i --force
 
 Start json server:
 json-server --watch --port=5001 --delay=1000 db2.json
+
+JSON server trenger -h option for å nås utenfor docker containeren
+
+json-server --watch --port=5001 -H 0.0.0.0 --delay=1000 db2.json
+
 
 start app:
 npm run dev     
