@@ -78,14 +78,6 @@ export default function CustomerSearchDialog(props: Props) {
       >
         <FormRow direction="horizontal">
           <Input
-            placeholder="Subscription Id"
-            label_direction="vertical"
-            bottom
-            value={subscriptionName}
-            right="small"
-            on_change={({ value }) => setSubscriptionName(value)}
-          />
-          <Input
             placeholder="Customer Name"
             label_direction="vertical"
             value={customerName}

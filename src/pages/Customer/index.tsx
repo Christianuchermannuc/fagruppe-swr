@@ -1,4 +1,4 @@
-import { Space } from "@dnb/eufemia";
+import { InfoCard, Space } from "@dnb/eufemia";
 import CustomerSearchForm from "../../components/customerSearchForm";
 import { useCustomerPage } from "./useCustomerPage";
 
@@ -13,7 +13,11 @@ function CustomerPage() {
         label2Value={"customerName"}
       />
       <Space top="large x-small"></Space>
-      {selectedCustomer && <>{selectedCustomer.customerName}</>}
+      {selectedCustomer && (
+        <>
+          <InfoCard text={selectedCustomer.customerName} title="Valgt kunde" />
+        </>
+      )}
     </div>
   );
 }

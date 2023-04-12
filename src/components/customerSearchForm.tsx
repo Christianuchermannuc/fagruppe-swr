@@ -21,22 +21,6 @@ export default function CustomerSearchForm(props: Props) {
   return (
     <>
       <FormRow>
-        <Input
-          right="small"
-          disabled
-          value={selectedCustomer?.id}
-          label_direction="vertical"
-          label={props?.label1Value ?? ""}
-          placeholder=""
-        />
-        <Input
-          label={props?.label2Value ?? ""}
-          label_direction="vertical"
-          autocomplete="on"
-          right="small"
-          disabled
-          value={selectedCustomer?.customerName}
-        />
         <CustomerSearchDialog
           onSelectedCustomerHandler={(e) => onSelectedCustomer(e)}
         />

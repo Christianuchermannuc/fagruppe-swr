@@ -10,17 +10,18 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 
 const env = import.meta.env.MODE;
-if (env === "development") {
-  await worker.start({
-    onUnhandledRequest: ({ method, url }) => {
-      if (!url.pathname.match(/\.(tsx|ts|css|woff|woff2|ttf)/)) {
-        throw new Error(`Unhandled ${method} request to ${url}`);
-      }
-    },
-  });
-}
+// if (env === "development") {
+//   await worker.start({
+//     onUnhandledRequest: ({ method, url }) => {
+//       if (!url.pathname.match(/\.(tsx|ts|css|woff|woff2|ttf)/)) {
+//         throw new Error(`Unhandled ${method} request to ${url}`);
+//       }
+//     },
+//   });
+// }
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-axios.defaults.baseURL = "http://localhost:5001";
+axios.defaults.baseURL = API_BASE_URL;
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
