@@ -1,3 +1,5 @@
+Utviklet med node version: v18.13.0
+
 Install:
 npm i -g json-server
 npm i --force
