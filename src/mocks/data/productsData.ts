@@ -13,3 +13,8 @@ let productList: Product[] = [
 export const getProductList = () => {
   return productList;
 };
+
+export const addNewProduct = (newProduct: Product) => {
+  productList = [...productList, newProduct];
+  return productList;
+};
