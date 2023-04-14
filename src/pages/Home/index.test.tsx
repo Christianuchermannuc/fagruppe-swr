@@ -14,6 +14,6 @@ describe("Product", () => {
       </MemoryRouter>
     );
     const table = await screen.findByRole("table");
-    screen.debug(undefined, 9999999);
+    //  screen.debug(undefined, 9999999);
   });
 });
